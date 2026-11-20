@@ -39,3 +39,7 @@ pre { font: var(--sm)/1.4 var(--mono); background: var(--color-inverse); color: 
 .bar input { font: inherit; padding: 4px 8px; border: 1px solid var(--color-border); border-radius: var(--r-sm); min-width: 200px; }
 .grid2 { display: grid; gap: var(--s-md); grid-template-columns: 2fr 1fr; }
 @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+/* Grid children may shrink below their content (long log rows, response bodies) instead of widening the page on phones. */
+main > *, .grid2 > * { min-width: 0; }
+.grid2 > .panel { overflow-x: auto; }
+@media (max-width: 480px) { header { flex-wrap: wrap; } .seg { flex-wrap: wrap; } .bar input { min-width: 0; flex: 1 1 160px; } }

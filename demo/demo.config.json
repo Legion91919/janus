@@ -1,0 +1,9 @@
+{
+  "start": [
+    { "name": "legacy", "cmd": "dotnet run --project src/Janus.LegacyTerminal --no-build", "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5207" }, "ready": "http://localhost:5207/" },
+    { "name": "facade", "cmd": "dotnet run --project src/Janus.Facade --no-build", "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5206" }, "ready": "http://localhost:5206/health/ready" },
+    { "name": "web", "cmd": "npm run dev -- --port 6206 --strictPort", "cwd": "web", "ready": "http://localhost:6206" }
+  ],
+  "url": "http://localhost:6206",
+  "viewport": { "width": 1280, "height": 800 }
+}
