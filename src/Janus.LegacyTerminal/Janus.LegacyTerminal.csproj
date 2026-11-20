@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup><RootNamespace>Janus.LegacyTerminal</RootNamespace></PropertyGroup>
+  <ItemGroup><InternalsVisibleTo Include="Janus.Tests" /></ItemGroup>
+</Project>

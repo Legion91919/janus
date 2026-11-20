@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Traffic console (final)</title><style>:root{--color-bg:#f4f7f6;--color-surface:#fff;--color-text:#0f2430;--color-muted:#4a5d68;--color-border:#c9d4d8;--color-accent:#0e6b66;--color-on-accent:#fff;--color-legacy:#8a4b08;--color-legacy-soft:#fdf1e2;--color-new:#0e6b66;--color-new-soft:#e3f2f0;--color-danger:#b42318;--color-danger-soft:#fdecea;--color-success:#1b7a4a;--color-inverse:#0f2430;--color-inverse-text:#e6edf0;--font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;--sm:13px;--md:15px;--lg:20px;--xl:28px;--s-xs:4px;--s-sm:8px;--s-md:16px;--s-lg:24px;--s-xl:40px;--r-sm:4px;--r-md:8px;--r-pill:999px}
+*{box-sizing:border-box}body{margin:0;font:var(--md)/1.45 var(--font);background:var(--color-bg);color:var(--color-text)}
+header{display:flex;align-items:center;gap:var(--s-sm);padding:var(--s-md) var(--s-lg);background:var(--color-inverse);color:var(--color-inverse-text)}
+.mark{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:var(--r-sm);background:var(--color-accent);color:var(--color-on-accent);font-weight:700}
+.b{display:inline-block;padding:2px 8px;border-radius:var(--r-pill);font:600 var(--sm)/1.4 var(--font)}.b.l{background:var(--color-legacy-soft);color:var(--color-legacy)}.b.n{background:var(--color-new-soft);color:var(--color-new)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--color-border)}th{font-size:var(--sm);color:var(--color-muted)}td.num{text-align:right}
+pre{font:var(--sm)/1.4 var(--mono);background:var(--color-inverse);color:var(--color-inverse-text);padding:var(--s-md);border-radius:var(--r-md);overflow:auto}
+button{font:inherit;cursor:pointer;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);padding:4px 10px;border-radius:var(--r-sm)}button[aria-pressed=true]{background:var(--color-accent);color:var(--color-on-accent);border-color:var(--color-accent)}
+:focus-visible{outline:3px solid var(--color-accent);outline-offset:2px}.muted{color:var(--color-muted)}
+main{padding:var(--s-lg);display:grid;gap:var(--s-lg)}.cards{display:grid;gap:var(--s-md);grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.card,.panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--r-md);padding:var(--s-md)}.card h2{margin:0;font-size:var(--md)}.seg{display:flex;gap:2px;margin:var(--s-sm) 0}.state{display:none}body[data-state=loading] .s-loading,body[data-state=empty] .s-empty,body[data-state=error] .s-error,body[data-state=success] .s-success{display:block}.err{background:var(--color-danger-soft);color:var(--color-danger);padding:var(--s-sm) var(--s-md);border-radius:var(--r-md)}.sk{height:14px;background:var(--color-border);border-radius:var(--r-sm);margin:6px 0}.switch{display:flex;gap:var(--s-xs);margin-left:auto}.grid2{display:grid;gap:var(--s-md);grid-template-columns:2fr 1fr}@media(max-width:720px){.grid2{grid-template-columns:1fr}}</style></head><body data-state="success">
+<header><span class="mark" aria-hidden="true">J</span><strong>Janus</strong><span class="switch" role="group" aria-label="Preview state"><button onclick="document.body.dataset.state='loading'">Loading</button><button onclick="document.body.dataset.state='empty'">Empty</button><button onclick="document.body.dataset.state='error'">Error</button><button onclick="document.body.dataset.state='success'">Success</button></span></header>
+<main>
+<section class="cards" aria-label="Capabilities">
+<div class="card"><h2>Customers</h2><div class="seg" role="group" aria-label="Customers mode"><button aria-pressed="false">Legacy</button><button aria-pressed="true">Shadow</button><button aria-pressed="false">New</button></div><p class="muted">Shadow: 12 matched, 0 mismatched. Ready to flip.</p></div>
+<div class="card"><h2>Schedules</h2><div class="seg" role="group" aria-label="Schedules mode"><button aria-pressed="true">Legacy</button><button disabled>Shadow</button><button disabled>New</button></div><p class="muted">Forwarded to the old terminal.</p></div>
+<div class="card"><h2>Arrears</h2><div class="seg" role="group" aria-label="Arrears mode"><button aria-pressed="true">Legacy</button><button disabled>Shadow</button><button disabled>New</button></div><p class="muted">Forwarded to the old terminal.</p></div>
+<div class="card"><h2>Old terminal</h2><p><span class="b n">&#9679; Breaker closed</span></p></div>
+</section>
+<section class="panel"><div style="display:flex;gap:var(--s-sm);flex-wrap:wrap"><button>GET /customers</button><button>GET /customers/10042</button><button>GET /customers/99999</button><button>GET /schedules/LN-200310</button><button>GET /arrears</button></div></section>
+<div class="grid2"><section class="panel" aria-label="Request log">
+<div class="state s-loading"><div class="sk"></div><div class="sk"></div><div class="sk"></div><p class="muted">Waiting for first response</p></div>
+<div class="state s-empty"><p class="muted">No requests yet. Send one above.</p></div>
+<div class="state s-error"><p class="err" role="alert">The bridge did not answer (503). The old terminal's breaker is open; try again in 30 s.</p></div>
+<div class="state s-success"><table><thead><tr><th>Time</th><th>Path</th><th>Status</th><th>Served by</th><th>Mode</th><th class="num">ms</th></tr></thead><tbody>
+<tr><td>09:14:07</td><td>/customers/10042</td><td>200</td><td><span class="b l">&#9636; LEGACY</span></td><td>Shadow</td><td class="num">38</td></tr>
+<tr><td>09:13:40</td><td>/customers/10077</td><td>200</td><td><span class="b n">&#9670; NEW</span></td><td>New</td><td class="num">3</td></tr>
+<tr><td>09:12:12</td><td>/schedules/LN-200310</td><td>200</td><td><span class="b l">&#9636; LEGACY</span></td><td>Legacy</td><td class="num">47</td></tr></tbody></table></div>
+</section><section class="panel" aria-label="Response"><h2 style="font-size:var(--md);margin-top:0">Response</h2><pre>SCH LN-200310  001 1261115 00000452350 PD
+SCH LN-200310  002 1261215 00000452350 DU
+EOR 0002 RECORDS</pre></section></div>
+</main></body></html>

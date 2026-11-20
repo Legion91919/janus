@@ -1,0 +1,1 @@
+{ "profiles": { "Janus.Facade": { "commandName": "Project", "launchBrowser": false, "applicationUrl": "http://localhost:5206", "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" } } } }

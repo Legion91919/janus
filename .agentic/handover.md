@@ -10,5 +10,9 @@ What the client needs to own this without us.
 - [ ] AI agent setup documented so their team can keep using it
 
 ## Known issues
+- Customer ACL title-cases names; prefixes like Mc/van need an exception table before real data.
+- Customers store is in memory; shadow counters reset on restart.
+- No authentication yet (internal network assumed).
 
 ## Recommended next steps
+- Slice 2 persistence and backfill; then move schedules with the same five steps (docs/DESIGN.md section 8).

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Legacy Bridge: Harbourline's loan servicing runs on an ageing terminal application only two people understand, so every change is slow and risky.
+Janus: Harbourline's loan servicing runs on an ageing terminal application only two people understand, so every change is slow and risky.
 
 ## Read first
 Everything about this project lives in the hidden `.agentic/` folder.
@@ -14,3 +14,5 @@ Load only the files your task needs.
 - Never commit secrets, real client data or personal data. Use `.env.example`.
 - Do not grow this file. New knowledge goes in the right `.agentic/` file; history goes in `.agentic/changelog.md`.
 - When you learn something that would help on the next project, add it to `.agentic/lessons.md`.
+## What is live
+- Slice 1: `Janus.Facade` (5206) routes `/customers`, `/schedules`, `/arrears` to the fake old terminal (5207) or the `Janus.Customers` module per flag (Legacy / Shadow / New); React console in `web/`. Tests: `.agentic/runbook.md`.

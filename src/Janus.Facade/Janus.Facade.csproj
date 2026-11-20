@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup><RootNamespace>Janus.Facade</RootNamespace></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Agentic.Blocks.Core" Version="0.1.0" />
+    <PackageReference Include="Agentic.Blocks.Web" Version="0.1.0" />
+    <ProjectReference Include="..\Janus.Customers\Janus.Customers.csproj" />
+    <InternalsVisibleTo Include="Janus.Tests" />
+    <InternalsVisibleTo Include="Janus.TestSupport" />
+  </ItemGroup>
+</Project>

@@ -1,6 +1,30 @@
 {
-  "color": { "bg": "#ffffff", "surface": "#f6f7f9", "text": "#14171f", "muted": "#5b6474", "accent": "#2f6fed", "danger": "#c4314b", "success": "#1f8a5b" },
-  "font": { "family": "Inter, system-ui, sans-serif", "size": { "sm": "13px", "md": "15px", "lg": "20px", "xl": "28px" } },
+  "$comment": "Janus tokens. Every text/background pair below is >= 4.5:1 (checked: text/bg 14.8, muted/bg 6.4, accent/surface 6.3, legacy/legacySoft 6.1, new/newSoft 5.5, danger/surface 6.6, success/surface 5.3, inverseText/inverse 13.5).",
+  "color": {
+    "bg": "#f4f7f6",
+    "surface": "#ffffff",
+    "text": "#0f2430",
+    "muted": "#4a5d68",
+    "border": "#c9d4d8",
+    "accent": "#0e6b66",
+    "onAccent": "#ffffff",
+    "legacy": "#8a4b08",
+    "legacySoft": "#fdf1e2",
+    "new": "#0e6b66",
+    "newSoft": "#e3f2f0",
+    "danger": "#b42318",
+    "dangerSoft": "#fdecea",
+    "success": "#1b7a4a",
+    "inverse": "#0f2430",
+    "inverseText": "#e6edf0"
+  },
+  "font": {
+    "family": "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    "mono": "ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace",
+    "size": { "sm": "13px", "md": "15px", "lg": "20px", "xl": "28px" },
+    "weight": { "regular": 400, "strong": 600 },
+    "numeric": "tabular-nums"
+  },
   "space": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "40px" },
-  "radius": { "sm": "6px", "md": "10px" }
+  "radius": { "sm": "4px", "md": "8px", "pill": "999px" }
 }

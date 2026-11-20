@@ -1,4 +1,4 @@
-# Legacy Bridge: project map
+# Janus: project map
 
 | Question | File |
 |---|---|
