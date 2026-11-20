@@ -1,0 +1,41 @@
+{
+  "name": "janus",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "forwardPorts": [
+    5207,
+    5206,
+    5173
+  ],
+  "portsAttributes": {
+    "5207": {
+      "label": "Legacy terminal (fake old system)",
+      "onAutoForward": "notify"
+    },
+    "5206": {
+      "label": "API (Janus)",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Web app",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "bierner.markdown-mermaid",
+        "editorconfig.editorconfig"
+      ]
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2
+  }
+}

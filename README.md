@@ -17,6 +17,20 @@ flowchart LR
   janus -->|New, Shadow compare| customers[Janus.Customers module<br/>+ anti-corruption layer]
 ```
 
+
+## Run it in GitHub Codespaces
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Legion91919/janus?quickstart=1)
+
+The dev container installs the SDKs, restores packages and runs every test once on first start. The same setup works locally with VS Code's Dev Containers extension.
+
+| What | Command | Port |
+|---|---|---|
+| Legacy terminal (fake old system) | `ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://0.0.0.0:5207 dotnet run --project src/Janus.LegacyTerminal` | 5207 |
+| API (Janus) | `ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://0.0.0.0:5206 dotnet run --project src/Janus.Facade` | 5206 |
+| Web app | `cd web && npm run dev` | 5173 |
+| All tests (same as CI) | `scripts/test-all.sh` | - |
+
 ## What is in the repo
 | Path | What |
 |---|---|
